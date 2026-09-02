@@ -887,19 +887,6 @@ function addToCart(id){
   renderCart();
 }
 
-  function toggleSizeGuide(btn){
-  const item = btn.parentElement;
-  const body = item.querySelector('.sg-body');
-  const isOpen = item.classList.contains('open');
-
-  if(isOpen){
-    body.style.maxHeight = null;
-    item.classList.remove('open');
-  } else {
-    body.style.maxHeight = body.scrollHeight + 'px';
-    item.classList.add('open');
-  }
-
 function removeFromCart(index){
   cart.splice(index,1);
   renderCart();
