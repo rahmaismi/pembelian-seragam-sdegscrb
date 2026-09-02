@@ -171,68 +171,6 @@
     font-size: 0.98rem;
     line-height: 1.6;
   }
-</style>
-</head>
-<body>
-
-<div class="accordion">
-  <h1>Pertanyaan Umum</h1>
-
-  <div class="item">
-    <button class="item-header" aria-expanded="false">
-      <span>Apa itu accordion?</span>
-      <span class="icon"></span>
-    </button>
-    <div class="item-body">
-      <div class="item-body-inner">
-        Accordion adalah komponen UI yang menyembunyikan dan menampilkan konten saat judulnya diklik, sehingga menghemat ruang di halaman.
-      </div>
-    </div>
-  </div>
-
-  <div class="item">
-    <button class="item-header" aria-expanded="false">
-      <span>Bagaimana cara kerjanya?</span>
-      <span class="icon"></span>
-    </button>
-    <div class="item-body">
-      <div class="item-body-inner">
-        Setiap item punya tombol judul. Saat diklik, panel kontennya akan meluas atau menutup dengan animasi transisi tinggi.
-      </div>
-    </div>
-  </div>
-
-  <div class="item">
-    <button class="item-header" aria-expanded="false">
-      <span>Bisakah beberapa panel terbuka sekaligus?</span>
-      <span class="icon"></span>
-    </button>
-    <div class="item-body">
-      <div class="item-body-inner">
-        Ya, secara default banyak panel bisa terbuka bersamaan. Tambahkan logika penutupan panel lain jika ingin hanya satu yang terbuka.
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  document.querySelectorAll('.item-header').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const body = item.querySelector('.item-body');
-      const isOpen = item.classList.contains('open');
-
-      if (isOpen) {
-        body.style.maxHeight = null;
-        item.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
 
   .product{
     background:var(--paper);
@@ -553,6 +491,62 @@
 </head>
 <body>
 
+<div class="accordion">
+  <h1>Pertanyaan Umum</h1>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Apa itu accordion?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Accordion adalah komponen UI yang menyembunyikan dan menampilkan konten saat judulnya diklik, sehingga menghemat ruang di halaman.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bagaimana cara kerjanya?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Setiap item punya tombol judul. Saat diklik, panel kontennya akan meluas atau menutup dengan animasi transisi tinggi.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bisakah beberapa panel terbuka sekaligus?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Ya, secara default banyak panel bisa terbuka bersamaan. Tambahkan logika penutupan panel lain jika ingin hanya satu yang terbuka.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.item-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const body = item.querySelector('.item-body');
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        body.style.maxHeight = null;
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
 <div class="topbar">
   <div class="brand" style="display:flex; align-items:center; gap:12;">
   <img src="Logo EGS.png" style="height:48px; width:auto;">
@@ -568,35 +562,6 @@
     <div id="productList"></div>
   </div>
 
-  <div class="wrap">
-    <div class="left">
-      <div class="section-title">Panduan Ukuran</div>
-      <table style="width:100%; border-collapse:collapse; font-family:'Work Sans', sans-serif; font-size:14px;">
-  <thead>
-    <tr style="background:var(--green); color:var(--cream);">
-      <th style="padding:10px 12px; text-align:left; border:1px solid var(--line);">Ukuran</th>
-      <th style="padding:10px 12px; text-align:left; border:1px solid var(--line);">Lingkar Dada</th>
-      <th style="padding:10px 12px; text-align:left; border:1px solid var(--line);">Panjang</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:var(--paper);">
-      <td style="padding:10px 12px; border:1px solid var(--line);">S</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">88 cm</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">62 cm</td>
-    </tr>
-    <tr style="background:var(--cream);">
-      <td style="padding:10px 12px; border:1px solid var(--line);">M</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">92 cm</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">64 cm</td>
-    </tr>
-    <tr style="background:var(--paper);">
-      <td style="padding:10px 12px; border:1px solid var(--line);">L</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">96 cm</td>
-      <td style="padding:10px 12px; border:1px solid var(--line);">66 cm</td>
-    </tr>
-  </tbody>
-</table>
   <div class="cart" id="cartPanel">
     <!-- filled by JS -->
   </div>
