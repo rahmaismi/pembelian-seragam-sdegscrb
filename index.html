@@ -171,7 +171,117 @@
     font-size: 0.98rem;
     line-height: 1.6;
   }
-
+  .size-guide{
+    margin-bottom:24px;
+  }
+  .size-guide h2{
+    font-size:19px;
+    margin-bottom:14px;
+  }
+  .sg-item{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  .sg-item:first-child{
+    border-top:1px solid var(--line);
+    border-radius:4px 4px 0 0;
+    overflow:hidden;
+  }
+  .sg-item:last-child{
+    border-radius:0 0 4px 4px;
+    overflow:hidden;
+  }
+  .sg-item{
+    border-left:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .sg-header{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:14px 16px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:500;
+    font-size:14.5px;
+    color:var(--ink);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+  }
+  .sg-header:hover{
+    background:var(--brass-soft);
+  }
+  .sg-header:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:-2px;
+  }
+  .sg-icon{
+    flex-shrink:0;
+    width:14px;
+    height:14px;
+    position:relative;
+  }
+  .sg-icon::before,
+  .sg-icon::after{
+    content:"";
+    position:absolute;
+    background:var(--green);
+    transition:transform 0.25s ease, opacity 0.25s ease;
+  }
+  .sg-icon::before{
+    width:100%;
+    height:1.5px;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+  }
+  .sg-icon::after{
+    width:1.5px;
+    height:100%;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .sg-item.open .sg-icon::after{
+    transform:translateX(-50%) rotate(90deg);
+    opacity:0;
+  }
+  .sg-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+  }
+  .sg-body-inner{
+    padding:0 16px 16px;
+  }
+  .sg-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .sg-table th, .sg-table td{
+    text-align:left;
+    padding:7px 8px;
+    border-bottom:1px solid var(--line);
+  }
+  .sg-table th{
+    color:var(--ink-soft);
+    font-weight:500;
+    font-size:12px;
+  }
+  .sg-table td:first-child, .sg-table th:first-child{
+    color:var(--green);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+  }
+  .sg-note{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
   .product{
     background:var(--paper);
     border:1px solid var(--line);
@@ -505,7 +615,113 @@
     <div class="section-sub">Silakan pilih seragam sesuai dengan kebutuhan</div>
     <div id="productList"></div>
   </div>
-                           
+    <div class="size-guide">
+    <h2>Panduan Ukuran</h2>
+
+    <div class="sg-item">
+      <button class="sg-header" onclick="toggleSizeGuide(this)">
+        <span>Ukuran Atasan (Blazer &amp; Kemeja Pangsi)</span>
+        <span class="sg-icon"></span>
+      </button>
+      <div class="sg-body">
+        <div class="sg-body-inner">
+          <table class="sg-table">
+            <tr><th>Ukuran</th><th>Lingkar Dada (cm)</th><th>Panjang Baju (cm)</th></tr>
+            <tr><td>S</td><td>84</td><td>56</td></tr>
+            <tr><td>M</td><td>88</td><td>58</td></tr>
+            <tr><td>L</td><td>92</td><td>60</td></tr>
+            <tr><td>XL</td><td>96</td><td>62</td></tr>
+            <tr><td>XXL</td><td>100</td><td>64</td></tr>
+          </table>
+          <div class="sg-note">Ukur lingkar dada pada bagian terlebar dan panjang dari bahu hingga bawah baju.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-item">
+      <button class="sg-header" onclick="toggleSizeGuide(this)">
+        <span>Ukuran Rok</span>
+        <span class="sg-icon"></span>
+      </button>
+      <div class="sg-body">
+        <div class="sg-body-inner">
+          <table class="sg-table">
+            <tr><th>Ukuran</th><th>Lingkar Pinggang (cm)</th><th>Panjang Rok (cm)</th></tr>
+            <tr><td>6</td><td>58</td><td>50</td></tr>
+            <tr><td>8</td><td>60</td><td>54</td></tr>
+            <tr><td>10</td><td>62</td><td>58</td></tr>
+            <tr><td>12</td><td>64</td><td>62</td></tr>
+            <tr><td>S</td><td>66</td><td>66</td></tr>
+            <tr><td>M</td><td>70</td><td>68</td></tr>
+            <tr><td>L</td><td>74</td><td>70</td></tr>
+          </table>
+          <div class="sg-note">Ukur lingkar pinggang secara pas dan panjang dari pinggang hingga batas bawah rok.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-item">
+      <button class="sg-header" onclick="toggleSizeGuide(this)">
+        <span>Ukuran Celana (Pangsi &amp; Pramuka)</span>
+        <span class="sg-icon"></span>
+      </button>
+      <div class="sg-body">
+        <div class="sg-body-inner">
+          <table class="sg-table">
+            <tr><th>Ukuran</th><th>Lingkar Pinggang (cm)</th><th>Panjang Celana (cm)</th></tr>
+            <tr><td>6</td><td>58</td><td>60</td></tr>
+            <tr><td>8</td><td>60</td><td>65</td></tr>
+            <tr><td>10</td><td>62</td><td>70</td></tr>
+            <tr><td>12</td><td>64</td><td>75</td></tr>
+            <tr><td>S</td><td>66</td><td>80</td></tr>
+            <tr><td>M</td><td>70</td><td>83</td></tr>
+            <tr><td>L</td><td>74</td><td>86</td></tr>
+            <tr><td>XL</td><td>78</td><td>89</td></tr>
+          </table>
+          <div class="sg-note">Ukur lingkar pinggang secara pas dan panjang dari pinggang hingga mata kaki.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-item">
+      <button class="sg-header" onclick="toggleSizeGuide(this)">
+        <span>Ukuran Kaos Olahraga</span>
+        <span class="sg-icon"></span>
+      </button>
+      <div class="sg-body">
+        <div class="sg-body-inner">
+          <table class="sg-table">
+            <tr><th>Ukuran</th><th>Lingkar Dada (cm)</th><th>Panjang Baju (cm)</th></tr>
+            <tr><td>S</td><td>86</td><td>55</td></tr>
+            <tr><td>M</td><td>90</td><td>58</td></tr>
+            <tr><td>L</td><td>94</td><td>61</td></tr>
+            <tr><td>XL</td><td>98</td><td>64</td></tr>
+          </table>
+          <div class="sg-note">Bahan katun spandex sedikit melar, disarankan memilih ukuran pas badan.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-item">
+      <button class="sg-header" onclick="toggleSizeGuide(this)">
+        <span>Ukuran Celana Training</span>
+        <span class="sg-icon"></span>
+      </button>
+      <div class="sg-body">
+        <div class="sg-body-inner">
+          <table class="sg-table">
+            <tr><th>Ukuran</th><th>Lingkar Pinggang (cm)</th><th>Panjang Celana (cm)</th></tr>
+            <tr><td>S</td><td>62</td><td>78</td></tr>
+            <tr><td>M</td><td>66</td><td>82</td></tr>
+            <tr><td>L</td><td>70</td><td>86</td></tr>
+            <tr><td>XL</td><td>74</td><td>90</td></tr>
+          </table>
+          <div class="sg-note">Pinggang menggunakan karet elastis, ukuran dapat menyesuaikan ±3cm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="cart" id="cartPanel">
     <!-- filled by JS -->
   </div>
@@ -670,6 +886,19 @@ function addToCart(id){
   renderProducts();
   renderCart();
 }
+
+  function toggleSizeGuide(btn){
+  const item = btn.parentElement;
+  const body = item.querySelector('.sg-body');
+  const isOpen = item.classList.contains('open');
+
+  if(isOpen){
+    body.style.maxHeight = null;
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
 
 function removeFromCart(index){
   cart.splice(index,1);
@@ -968,7 +1197,19 @@ function uploadProofAndFinish(){
 function finishOrder(){
   renderCart(currentOrder.orderNo);
 }
+function toggleSizeGuide(btn){
+  const item = btn.parentElement;
+  const body = item.querySelector('.sg-body');
+  const isOpen = item.classList.contains('open');
 
+  if(isOpen){
+    body.style.maxHeight = null;
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
 function resetCart(){
   cart = [];
   currentOrder = null;
