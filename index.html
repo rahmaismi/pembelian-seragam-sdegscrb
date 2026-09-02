@@ -505,7 +505,68 @@
     <div class="section-sub">Silakan pilih seragam sesuai dengan kebutuhan</div>
     <div id="productList"></div>
   </div>
+  
+<div class="wrap">
+  <div class="left">
+    <div class="section title">Panduan Ukuran</div>
+      <div class="accordion">
+  <h1>Pertanyaan Umum</h1>
 
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Apa itu accordion?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Accordion adalah komponen UI yang menyembunyikan dan menampilkan konten saat judulnya diklik, sehingga menghemat ruang di halaman.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bagaimana cara kerjanya?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Setiap item punya tombol judul. Saat diklik, panel kontennya akan meluas atau menutup dengan animasi transisi tinggi.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bisakah beberapa panel terbuka sekaligus?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Ya, secara default banyak panel bisa terbuka bersamaan. Tambahkan logika penutupan panel lain jika ingin hanya satu yang terbuka.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.item-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const body = item.querySelector('.item-body');
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        body.style.maxHeight = null;
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      </div>
+                         
   <div class="cart" id="cartPanel">
     <!-- filled by JS -->
   </div>
