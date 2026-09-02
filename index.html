@@ -92,6 +92,148 @@
     margin-bottom:22px;
   }
 
+  .accordion { width: 100%; max-width: 560px; }
+  .accordion h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 24px;
+  }
+
+  .item { border-bottom: 1px solid var(--line); }
+  .item:first-child { border-top: 1px solid var(--line); }
+
+  .item-header {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 18px 4px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .item-header:focus-visible {
+    outline: 2px solid var(--ink-soft);
+    outline-offset: 2px;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    position: relative;
+  }
+
+  .icon::before,
+  .icon::after {
+    content: "";
+    position: absolute;
+    background: var(--paper);
+    transition: transform 0.25s ease;
+  }
+
+  .icon::before {
+    width: 100%;
+    height: 1.5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .icon::after {
+    width: 1.5px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .item.open .icon::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+  }
+
+  .item-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .item-body-inner {
+    padding: 0 4px 20px;
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="accordion">
+  <h1>Pertanyaan Umum</h1>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Apa itu accordion?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Accordion adalah komponen UI yang menyembunyikan dan menampilkan konten saat judulnya diklik, sehingga menghemat ruang di halaman.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bagaimana cara kerjanya?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Setiap item punya tombol judul. Saat diklik, panel kontennya akan meluas atau menutup dengan animasi transisi tinggi.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <button class="item-header" aria-expanded="false">
+      <span>Bisakah beberapa panel terbuka sekaligus?</span>
+      <span class="icon"></span>
+    </button>
+    <div class="item-body">
+      <div class="item-body-inner">
+        Ya, secara default banyak panel bisa terbuka bersamaan. Tambahkan logika penutupan panel lain jika ingin hanya satu yang terbuka.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.item-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const body = item.querySelector('.item-body');
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        body.style.maxHeight = null;
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
   .product{
     background:var(--paper);
     border:1px solid var(--line);
